@@ -4,69 +4,73 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AJILE</title>
-  <meta name="description" content="AJILE — pronounced agile — is a blues/R&B trio featuring Aayushi Karnik, Jaysin Glover, and Layton Weedeman." />
+  <meta name="description" content="AJILE — pronounced agile — is a blues, soul, and R&B trio featuring Aayushi Karnik, Jaysin Glover, and Layton Weedeman." />
+  <meta property="og:title" content="AJILE" />
+  <meta property="og:description" content="Blues • Soul • R&B" />
+  <meta property="og:image" content="assets/ajile-band.jpg" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main>
-    <section class="hero">
-      <div class="hero-image" role="img" aria-label="AJILE band photo placeholder"></div>
+    <section class="hero" id="top">
+      <img class="hero-photo" src="assets/ajile-band.jpg" alt="AJILE performing live" />
+      <div class="hero-shade"></div>
+
       <div class="hero-content">
-        <p class="eyebrow">pronounced “agile”</p>
-        <h1>AJILE</h1>
-        <p class="tagline">Blues • Soul • Groove • Improvisation</p>
-        <div class="hero-links">
-          <a href="#music">Music</a>
-          <a href="#video">Video</a>
-          <a href="#shows">Shows</a>
-          <a href="#contact">Contact</a>
+        <img class="logo" src="assets/ajile-logo.png" alt="AJILE" />
+        <p class="pronunciation">pronounced “agile”</p>
+        <div class="divider"></div>
+        <p class="genres">Blues <span>•</span> Soul <span>•</span> R&amp;B</p>
+        <p class="members">Aayushi Karnik <span>|</span> Jaysin Glover <span>|</span> Layton Weedeman</p>
+        <a class="scroll" href="#about" aria-label="Scroll to about section">↓<small>Scroll</small></a>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>About</h2>
+      <p>
+        AJILE is a blues, soul, and R&amp;B trio rooted in groove, feel, and spontaneous creation.
+        Featuring Aayushi Karnik, Jaysin Glover, and Layton Weedeman, the group moves between
+        raw guitar-driven expression, deep pocket bass, and improvisational rhythm.
+      </p>
+    </section>
+
+    <section class="section" id="music">
+      <h2>Music</h2>
+      <div class="panel music-panel">
+        <img src="assets/ajile-logo.png" alt="" />
+        <div>
+          <h3>Debut recordings coming soon.</h3>
+          <p>Audio player will live here once music is ready.</p>
         </div>
       </div>
     </section>
 
-    <section class="section about" id="about">
-      <div class="section-label">About</div>
-      <div class="section-body">
-        <p>
-          AJILE — pronounced “agile” — is a blues/R&B trio featuring Aayushi Karnik,
-          Jaysin Glover, and Layton Weedeman. The group blends raw guitar-driven soul,
-          deep pocket grooves, and an improvisational spirit.
-        </p>
-      </div>
-    </section>
-
-    <section class="section" id="music">
-      <div class="section-label">Music</div>
-      <div class="section-body card">
-        <h2>Debut recordings coming soon.</h2>
-        <p>Audio player will live here once music is ready.</p>
-      </div>
-    </section>
-
     <section class="section" id="video">
-      <div class="section-label">Video</div>
-      <div class="section-body card">
-        <h2>Live footage coming soon.</h2>
-        <p>YouTube clip will live here once video is ready.</p>
+      <h2>Video</h2>
+      <div class="video-placeholder">
+        <img src="assets/ajile-band.jpg" alt="" />
+        <div class="play">▶</div>
+        <p>Live performance video coming soon.</p>
       </div>
     </section>
 
     <section class="section" id="shows">
-      <div class="section-label">Shows</div>
-      <div class="section-body card">
-        <h2>No upcoming performances announced.</h2>
-        <p>Check back soon for dates.</p>
+      <h2>Shows</h2>
+      <div class="panel">
+        <h3>Upcoming performances will be announced soon.</h3>
+        <p>Check back for dates.</p>
       </div>
     </section>
 
-    <footer class="footer" id="contact">
-      <p>Booking & inquiries</p>
-      <a href="mailto:weareajile@gmail.com">weareajile@gmail.com</a>
-      <div class="socials">
-        <a href="#" aria-label="Instagram link placeholder">Instagram</a>
-        <a href="#" aria-label="YouTube link placeholder">YouTube</a>
+    <footer class="section footer" id="contact">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a href="#" aria-label="Instagram placeholder">Instagram</a>
+        <a href="#" aria-label="YouTube placeholder">YouTube</a>
+        <a href="mailto:weareajile@gmail.com">Email</a>
       </div>
-      <p class="small">© <span id="year"></span> AJILE</p>
+      <p class="copyright">© <span id="year"></span> AJILE</p>
     </footer>
   </main>
 
