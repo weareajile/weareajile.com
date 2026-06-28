@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AJILE</title>
+  <meta name="description" content="AJILE — pronounced agile — is a blues, soul, and R&B trio featuring Aayushi Karnik, Jaysin Glover, and Layton Weedeman." />
+  <style>
+    :root {
+      --paper: #eadfc9;
+      --paper-light: #f1e6d2;
+      --ink: #0b0a08;
+      --muted: rgba(11, 10, 8, 0.66);
+      --line: rgba(11, 10, 8, 0.2);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.18), transparent 28%),
+        linear-gradient(90deg, rgba(0,0,0,.014) 1px, transparent 1px),
+        linear-gradient(rgba(0,0,0,.011) 1px, transparent 1px),
+        var(--paper);
+      background-size: auto, 7px 7px, 7px 7px, auto;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .hero {
+      min-height: 92svh;
+      position: relative;
+      display: grid;
+      align-items: start;
+      justify-items: center;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .hero-photo {
+      width: min(100%, 1280px);
+      height: min(76svh, 800px);
+      object-fit: cover;
+      object-position: center;
+      filter: contrast(1.07) brightness(.88);
+      display: block;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(234,223,201,0) 0%, rgba(234,223,201,0) 54%, rgba(234,223,201,.55) 76%, var(--paper) 92%),
+        radial-gradient(circle at 50% 35%, rgba(0,0,0,.03), rgba(0,0,0,.44) 74%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: absolute;
+      z-index: 1;
+      top: clamp(12.5rem, 32svh, 22rem);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(900px, calc(100% - 2rem));
+      text-align: center;
+    }
+
+    .hero-logo {
+      display: block;
+      width: min(410px, 68vw);
+      margin: 0 auto .85rem;
+    }
+
+    .pronounced {
+      margin: 0 0 1.45rem;
+      color: var(--paper-light);
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      text-shadow: 0 2px 18px rgba(0,0,0,.85);
+    }
+
+    .genres,
+    .members {
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .genres {
+      font-size: clamp(.95rem, 2vw, 1.15rem);
+      letter-spacing: .38em;
+    }
+
+    .members {
+      margin-top: 1.35rem;
+      font-size: clamp(.68rem, 1.25vw, .86rem);
+      letter-spacing: .22em;
+    }
+
+    .genres span,
+    .members span { margin: 0 .75rem; }
+
+    .scroll {
+      display: inline-block;
+      margin-top: 1.75rem;
+      font-size: 2.25rem;
+      line-height: 1;
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+
+    .scroll:hover {
+      transform: translateY(3px);
+      opacity: .72;
+    }
+
+    .section {
+      width: min(860px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(2.7rem, 5vw, 3.8rem) 0;
+      text-align: center;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 1.45rem;
+      text-transform: uppercase;
+      letter-spacing: .42em;
+      font-size: clamp(1.05rem, 2.2vw, 1.34rem);
+      color: var(--ink);
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 46px;
+      height: 1px;
+      margin: .65rem auto 0;
+      background: var(--ink);
+    }
+
+    .about p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: clamp(1.12rem, 2.25vw, 1.42rem);
+      line-height: 1.56;
+    }
+
+    .listen h3,
+    .show-card p {
+      margin: 0;
+      font-size: clamp(1.02rem, 1.8vw, 1.18rem);
+      font-weight: 500;
+    }
+
+    .coming-line {
+      width: min(360px, 70vw);
+      height: 1px;
+      background: var(--line);
+      margin: 1.25rem auto 0;
+    }
+
+    .video-thumb {
+      width: min(650px, 100%);
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      background: var(--ink);
+      display: grid;
+      place-items: center;
+      margin: 1.1rem auto 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-thumb::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("ajile-band-bw.jpg") center / cover;
+      filter: grayscale(1) contrast(1.05) brightness(.72);
+      opacity: .72;
+    }
+
+    .play-button {
+      position: relative;
+      z-index: 1;
+      width: 70px;
+      height: 70px;
+      border: 2px solid var(--paper);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--paper);
+      background: rgba(0,0,0,.28);
+      font-size: 1.6rem;
+      padding-left: .16rem;
+    }
+
+    .caption {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .connect-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(1.7rem, 5vw, 4rem);
+      flex-wrap: wrap;
+    }
+
+    .connect-icons a {
+      display: grid;
+      justify-items: center;
+      gap: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .68rem;
+      color: var(--ink);
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+
+    .connect-icons a:hover {
+      transform: translateY(-2px);
+      opacity: .72;
+    }
+
+    .connect-icons svg {
+      width: 42px;
+      height: 42px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .bandcamp-mark {
+      width: 54px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 1.45rem;
+      letter-spacing: -0.08em;
+      line-height: 1;
+      position: relative;
+    }
+
+    .bandcamp-mark::before {
+      content: "";
+      position: absolute;
+      width: 42px;
+      height: 22px;
+      background: currentColor;
+      transform: skewX(-24deg);
+      left: 0;
+      top: 10px;
+    }
+
+    .bandcamp-mark span {
+      position: relative;
+      z-index: 1;
+      color: var(--paper);
+      margin-left: .45rem;
+      font-size: .92rem;
+      letter-spacing: -.05em;
+    }
+
+    .youtube svg {
+      fill: currentColor;
+      stroke: none;
+      width: 48px;
+      height: 42px;
+    }
+
+    .copyright {
+      margin: 2rem 0 0;
+      color: var(--muted);
+      letter-spacing: .14em;
+      font-size: .82rem;
+    }
+
+    @media (max-width: 740px) {
+      .hero {
+        min-height: 86svh;
+      }
+
+      .hero-photo {
+        width: 100%;
+        height: 68svh;
+        object-position: 47% center;
+      }
+
+      .hero-content {
+        top: clamp(10.5rem, 27svh, 17rem);
+      }
+
+      .hero-logo { width: min(320px, 76vw); }
+
+      .pronounced {
+        margin-bottom: 1.15rem;
+      }
+
+      .genres {
+        letter-spacing: .2em;
+      }
+
+      .members {
+        display: grid;
+        gap: .2rem;
+        line-height: 1.75;
+      }
+
+      .members span { display: none; }
+
+      .section {
+        padding: 2.7rem 0;
+      }
+
+      .connect-icons {
+        gap: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <img class="hero-photo" src="ajile-band-bw.jpg" alt="AJILE performing live" />
+      <div class="hero-content">
+        <img class="hero-logo" src="ajile-logo-beige.png" alt="AJILE" />
+        <p class="pronounced">pronounced “agile”</p>
+        <p class="genres">Blues <span>•</span> Soul <span>•</span> R&amp;B</p>
+        <p class="members">Aayushi Karnik <span>|</span> Jaysin Glover <span>|</span> Layton Weedeman</p>
+        <a class="scroll" href="#about" aria-label="Scroll to about section">↓</a>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <h2>About</h2>
+      <p>
+        AJILE is a blues, soul, and R&amp;B trio rooted in groove, feel, and improvisation.
+        Featuring guitarist and vocalist Aayushi Karnik, bassist Jaysin Glover, and drummer
+        Layton Weedeman, the band blends expressive songwriting, melodic bass lines, and
+        deep-pocket rhythms into performances that leave room for spontaneity and conversation.
+      </p>
+    </section>
+
+    <section class="section" id="music">
+      <h2>Music</h2>
+      <div class="listen">
+        <h3>Debut recordings coming soon.</h3>
+        <div class="coming-line"></div>
+      </div>
+    </section>
+
+    <section class="section" id="video">
+      <h2>Video</h2>
+      <p class="caption">Live performance video coming soon.</p>
+      <div class="video-thumb" aria-label="Video coming soon">
+        <span class="play-button">▶</span>
+      </div>
+    </section>
+
+    <section class="section" id="shows">
+      <h2>Shows</h2>
+      <div class="show-card">
+        <p>Upcoming performances will be announced soon.</p>
+      </div>
+    </section>
+
+    <footer class="section footer" id="connect">
+      <h2>Connect</h2>
+      <div class="connect-icons">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="#" aria-label="Bandcamp">
+          <span class="bandcamp-mark"><span>bc</span></span>
+          <span>Bandcamp</span>
+        </a>
+        <a class="youtube" href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C16 4 12 4 12 4s-4 0-6.8.2c-.4.1-1.2.1-2 .9-.6.6-.8 2.1-.8 2.1S2.2 9 2.2 10.8v1.7c0 1.8.2 3.6.2 3.6s.2 1.5.8 2.1c.8.8 1.8.8 2.2.9 1.6.2 6.6.2 6.6.2s4 0 6.8-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2.1.8-2.1s.2-1.8.2-3.6v-1.7c0-1.8-.2-3.6-.2-3.6zM10 15.2V8.8l5.8 3.2L10 15.2z"></path></svg>
+          <span>YouTube</span>
+        </a>
+        <a href="mailto:weareajile@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"></rect><path d="M4 7l8 6 8-6"></path></svg>
+          <span>Email</span>
+        </a>
+      </div>
+      <p class="copyright">© <span id="year"></span> AJILE</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
