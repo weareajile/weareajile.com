@@ -5,14 +5,308 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AJILE</title>
   <meta name="description" content="AJILE — pronounced agile — is a blues, soul, and R&B trio featuring Aayushi Karnik, Jaysin Glover, and Layton Weedeman." />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --paper: #eadfc9;
+      --ink: #0b0a08;
+      --soft-ink: rgba(11,10,8,.68);
+      --line: rgba(11,10,8,.22);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      align-items: start;
+      justify-items: center;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .hero-photo {
+      width: min(100%, 1280px);
+      height: min(72svh, 760px);
+      object-fit: cover;
+      object-position: center;
+      filter: contrast(1.08) brightness(.86);
+      display: block;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(234,223,201,0) 0%, rgba(234,223,201,0) 48%, rgba(234,223,201,.82) 72%, var(--paper) 88%),
+        radial-gradient(circle at 50% 35%, rgba(0,0,0,.05), rgba(0,0,0,.5) 72%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: absolute;
+      z-index: 1;
+      top: clamp(13rem, 33svh, 22rem);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(900px, calc(100% - 2rem));
+      text-align: center;
+    }
+
+    .hero-logo {
+      display: block;
+      width: min(420px, 68vw);
+      margin: 0 auto .9rem;
+    }
+
+    .pronounced {
+      margin: 0 0 1.5rem;
+      color: var(--paper);
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      text-shadow: 0 2px 18px rgba(0,0,0,.85);
+    }
+
+    .genres,
+    .members {
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .genres {
+      font-size: clamp(.95rem, 2vw, 1.18rem);
+      letter-spacing: .38em;
+    }
+
+    .members {
+      margin-top: 1.45rem;
+      font-size: clamp(.68rem, 1.25vw, .86rem);
+      letter-spacing: .22em;
+    }
+
+    .genres span,
+    .members span { margin: 0 .75rem; }
+
+    .scroll {
+      display: inline-block;
+      margin-top: 2rem;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .section {
+      width: min(900px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(3.2rem, 7vw, 5rem) 0;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    .section:first-of-type { border-top: 0; }
+
+    h2 {
+      margin: 0 0 1.75rem;
+      text-transform: uppercase;
+      letter-spacing: .42em;
+      font-size: clamp(1.1rem, 2.4vw, 1.48rem);
+      color: var(--ink);
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 1px;
+      margin: .7rem auto 0;
+      background: var(--ink);
+    }
+
+    .about p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: clamp(1.05rem, 2.2vw, 1.34rem);
+      line-height: 1.62;
+    }
+
+    .listen {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 2rem;
+      align-items: center;
+      text-align: left;
+      background: rgba(255,255,255,.12);
+    }
+
+    .listen img {
+      width: 132px;
+      aspect-ratio: 1;
+      object-fit: contain;
+      background: var(--ink);
+      padding: 1rem;
+    }
+
+    .listen h3 {
+      margin: 0 0 1.15rem;
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+      font-weight: 500;
+    }
+
+    .fake-player {
+      display: grid;
+      grid-template-columns: auto auto 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      color: var(--soft-ink);
+    }
+
+    .fake-player button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper);
+      cursor: default;
+    }
+
+    .track {
+      height: 1px;
+      background: var(--line);
+    }
+
+    .video-thumb {
+      width: min(760px, 100%);
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      background: var(--ink);
+      display: grid;
+      place-items: center;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-thumb::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("ajile-band-bw.jpg") center / cover;
+      filter: grayscale(1) contrast(1.05) brightness(.72);
+      opacity: .65;
+    }
+
+    .play-button {
+      position: relative;
+      z-index: 1;
+      width: 78px;
+      height: 78px;
+      border: 2px solid var(--paper);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--paper);
+      background: rgba(0,0,0,.35);
+      font-size: 1.8rem;
+      padding-left: .18rem;
+    }
+
+    .caption {
+      margin: 1rem 0 0;
+      color: var(--soft-ink);
+    }
+
+    .show-card {
+      max-width: 760px;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      padding: 2rem;
+      background: rgba(255,255,255,.12);
+    }
+
+    .show-card p {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      min-width: 145px;
+      border: 1px solid var(--line);
+      padding: .95rem 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .72rem;
+    }
+
+    .contact-links a:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .copyright {
+      margin: 2rem 0 0;
+      color: var(--soft-ink);
+      letter-spacing: .14em;
+      font-size: .82rem;
+    }
+
+    @media (max-width: 740px) {
+      .hero-photo {
+        height: 68svh;
+        object-position: 47% center;
+      }
+
+      .hero-content {
+        top: clamp(11rem, 28svh, 18rem);
+      }
+
+      .hero-logo { width: min(340px, 76vw); }
+
+      .genres { letter-spacing: .22em; }
+
+      .members {
+        display: grid;
+        gap: .2rem;
+        line-height: 1.8;
+      }
+
+      .members span { display: none; }
+
+      .listen {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .listen img { margin: 0 auto; }
+    }
+  </style>
 </head>
 <body>
   <main>
     <section class="hero">
       <img class="hero-photo" src="ajile-band-bw.jpg" alt="AJILE performing live" />
-      <div class="hero-fade"></div>
-
       <div class="hero-content">
         <img class="hero-logo" src="ajile-logo-beige.png" alt="AJILE" />
         <p class="pronounced">pronounced “agile”</p>
@@ -36,7 +330,7 @@
       <h2>Music</h2>
       <div class="listen">
         <img src="ajile-logo-black.png" alt="" />
-        <div class="listen-copy">
+        <div>
           <h3>Debut recordings coming soon.</h3>
           <div class="fake-player">
             <button aria-label="Play preview">▶</button>
@@ -50,9 +344,9 @@
 
     <section class="section" id="video">
       <h2>Video</h2>
-      <button class="video-thumb" type="button" aria-label="Video coming soon">
+      <div class="video-thumb" aria-label="Video coming soon">
         <span class="play-button">▶</span>
-      </button>
+      </div>
       <p class="caption">Live performance video coming soon.</p>
     </section>
 
@@ -73,6 +367,9 @@
       <p class="copyright">© <span id="year"></span> AJILE</p>
     </footer>
   </main>
-  <script src="script.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
