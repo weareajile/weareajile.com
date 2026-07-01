@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AJILE</title>
-  <meta name="description" content="AJILE — pronounced agile — is a blues, soul, and R&B trio featuring Aayushi Karnik, Jaysin Glover, and Layton Weedeman." />
+  <meta name="description" content="AJILE — pronounced agile — is a Brooklyn-based blues, soul, and R&B trio featuring Aayushi Karnik, Jaysin Glover, and Layton Weedeman." />
   <style>
     :root {
-      --paper: #eadfc9;
-      --paper-light: #f1e6d2;
-      --ink: #0b0a08;
-      --muted: rgba(11, 10, 8, 0.66);
-      --line: rgba(11, 10, 8, 0.2);
+      --bg: #050505;
+      --cream: #F1DFC8;
+      --red: #D73A36;
+      --muted: #A89A88;
+      --line: rgba(241, 223, 200, 0.16);
     }
 
     * { box-sizing: border-box; }
@@ -19,35 +19,31 @@
 
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(255,255,255,.18), transparent 28%),
-        linear-gradient(90deg, rgba(0,0,0,.014) 1px, transparent 1px),
-        linear-gradient(rgba(0,0,0,.011) 1px, transparent 1px),
-        var(--paper);
-      background-size: auto, 7px 7px, 7px 7px, auto;
-      color: var(--ink);
+      background: var(--bg);
+      color: var(--cream);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     a { color: inherit; text-decoration: none; }
 
     .hero {
-      min-height: 92svh;
+      min-height: 100svh;
       position: relative;
       display: grid;
-      align-items: start;
-      justify-items: center;
+      place-items: center;
       overflow: hidden;
-      background: var(--paper);
+      padding: 2rem;
+      background: var(--bg);
     }
 
     .hero-photo {
-      width: min(100%, 1280px);
-      height: min(76svh, 800px);
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center;
-      filter: contrast(1.07) brightness(.88);
-      display: block;
+      filter: brightness(0.55) contrast(1.08) saturate(0.95);
     }
 
     .hero::after {
@@ -55,125 +51,155 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(234,223,201,0) 0%, rgba(234,223,201,0) 54%, rgba(234,223,201,.55) 76%, var(--paper) 92%),
-        radial-gradient(circle at 50% 35%, rgba(0,0,0,.03), rgba(0,0,0,.44) 74%);
+        radial-gradient(circle at center, rgba(5,5,5,0.08), rgba(5,5,5,0.72) 72%),
+        linear-gradient(to bottom, rgba(5,5,5,0.12), rgba(5,5,5,0.25) 45%, var(--bg) 100%);
       pointer-events: none;
     }
 
     .hero-content {
-      position: absolute;
+      position: relative;
       z-index: 1;
-      top: clamp(12.5rem, 32svh, 22rem);
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(900px, calc(100% - 2rem));
+      width: min(920px, calc(100% - 2rem));
       text-align: center;
+      transform: translateY(3svh);
     }
 
     .hero-logo {
       display: block;
-      width: min(410px, 68vw);
-      margin: 0 auto .85rem;
+      width: min(520px, 78vw);
+      margin: 0 auto 1rem;
     }
 
     .pronounced {
-      margin: 0 0 1.45rem;
-      color: var(--paper-light);
+      margin: 0 0 1.35rem;
+      color: var(--cream);
       font-style: italic;
       font-size: clamp(1rem, 2vw, 1.35rem);
       text-shadow: 0 2px 18px rgba(0,0,0,.85);
     }
 
-    .genres,
-      .members {
+    .genres {
       margin: 0;
+      color: var(--cream);
       text-transform: uppercase;
-      font-weight: 800;
-      color: #efe5cf;
-      text-shadow: 0 2px 18px rgba(0,0,0,.8);
+      font-weight: 900;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      letter-spacing: .16em;
     }
 
-    .genres {
-      font-size: clamp(.95rem, 2vw, 1.15rem);
-      letter-spacing: .38em;
+    .genres .red { color: var(--red); }
+
+    .genres .dot {
+      color: var(--red);
+      padding: 0 .45rem;
     }
 
     .members {
-      margin-top: 1.35rem;
+      margin: 1.35rem 0 0;
+      color: var(--cream);
+      text-transform: uppercase;
+      font-weight: 800;
       font-size: clamp(.68rem, 1.25vw, .86rem);
       letter-spacing: .22em;
     }
 
-    .genres span,
-    .members span { margin: 0 .75rem; }
+    .members span {
+      color: var(--red);
+      margin: 0 .75rem;
+    }
 
     .scroll {
       display: inline-block;
-      margin-top: 1.75rem;
+      margin-top: 2rem;
+      color: var(--cream);
       font-size: 2.25rem;
       line-height: 1;
-      transition: transform 160ms ease, opacity 160ms ease;
+      transition: transform 160ms ease, color 160ms ease;
     }
 
     .scroll:hover {
       transform: translateY(3px);
-      opacity: .72;
+      color: var(--red);
+    }
+
+    .now-playing {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem;
+      text-align: center;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .72rem;
+    }
+
+    .now-playing strong {
+      color: var(--red);
+      margin-right: .75rem;
     }
 
     .section {
-      width: min(860px, calc(100% - 2rem));
+      width: min(900px, calc(100% - 2rem));
       margin: 0 auto;
-      padding: clamp(2.7rem, 5vw, 3.8rem) 0;
+      padding: clamp(3.2rem, 6vw, 5rem) 0;
       text-align: center;
     }
 
-    .section + .section {
-      border-top: 1px solid var(--line);
-    }
+    .section + .section { border-top: 1px solid var(--line); }
 
     h2 {
-      margin: 0 0 1.45rem;
+      margin: 0 0 1.6rem;
+      color: var(--cream);
       text-transform: uppercase;
       letter-spacing: .42em;
       font-size: clamp(1.05rem, 2.2vw, 1.34rem);
-      color: var(--ink);
     }
 
     h2::after {
       content: "";
       display: block;
-      width: 46px;
-      height: 1px;
-      margin: .65rem auto 0;
-      background: var(--ink);
+      width: 48px;
+      height: 2px;
+      margin: .7rem auto 0;
+      background: var(--red);
     }
 
+    .about { width: min(760px, calc(100% - 2rem)); }
+
     .about p {
-      max-width: 680px;
-      margin: 0 auto;
+      margin: 0 auto 1rem;
       font-size: clamp(1.12rem, 2.25vw, 1.42rem);
       line-height: 1.56;
     }
 
-    .listen h3,
-    .show-card p {
-      margin: 0;
-      font-size: clamp(1.02rem, 1.8vw, 1.18rem);
-      font-weight: 500;
+    .about p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
     }
 
-    .coming-line {
-      width: min(360px, 70vw);
-      height: 1px;
-      background: var(--line);
-      margin: 1.25rem auto 0;
+    .music-kicker {
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-weight: 900;
+      margin: 0 0 .5rem;
+    }
+
+    .music-title {
+      margin: 0;
+      color: var(--cream);
+      text-transform: uppercase;
+      font-size: clamp(2.2rem, 8vw, 5rem);
+      line-height: .95;
+      letter-spacing: -.04em;
+      font-weight: 900;
     }
 
     .video-thumb {
-      width: min(650px, 100%);
+      width: min(720px, 100%);
       aspect-ratio: 16 / 9;
       border: 1px solid var(--line);
-      background: var(--ink);
+      background: #000;
       display: grid;
       place-items: center;
       margin: 1.1rem auto 0;
@@ -185,24 +211,31 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url("ajile-band-bw.jpg") center / cover;
-      filter: grayscale(1) contrast(1.05) brightness(.72);
-      opacity: .72;
+      background: url("ajile-band.jpg") center / cover;
+      filter: brightness(.58) contrast(1.05);
+      opacity: .85;
     }
 
     .play-button {
       position: relative;
       z-index: 1;
-      width: 70px;
-      height: 70px;
-      border: 2px solid var(--paper);
+      width: 74px;
+      height: 74px;
+      border: 2px solid var(--cream);
       border-radius: 50%;
       display: grid;
       place-items: center;
-      color: var(--paper);
-      background: rgba(0,0,0,.28);
-      font-size: 1.6rem;
-      padding-left: .16rem;
+      color: var(--cream);
+      background: rgba(0,0,0,.38);
+      font-size: 1.65rem;
+      padding-left: .18rem;
+      transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .video-thumb:hover .play-button {
+      color: var(--red);
+      border-color: var(--red);
+      transform: scale(1.04);
     }
 
     .caption {
@@ -210,28 +243,70 @@
       color: var(--muted);
     }
 
+    .shows-list {
+      display: grid;
+      gap: 1.2rem;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .show-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .show-row:first-child { border-top: 0; }
+
+    .show-date {
+      color: var(--red);
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: .12em;
+      line-height: 1.1;
+    }
+
+    .show-date .day {
+      display: block;
+      color: var(--cream);
+      font-size: 2.4rem;
+      letter-spacing: 0;
+    }
+
+    .show-info h3 {
+      margin: 0 0 .25rem;
+      color: var(--cream);
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    }
+
+    .show-info p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
     .connect-icons {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: clamp(1.7rem, 5vw, 4rem);
+      gap: clamp(1.8rem, 5vw, 4rem);
       flex-wrap: wrap;
     }
 
     .connect-icons a {
       display: grid;
-      justify-items: center;
-      gap: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      font-size: .68rem;
-      color: var(--ink);
-      transition: transform 160ms ease, opacity 160ms ease;
+      place-items: center;
+      color: var(--cream);
+      transition: transform 160ms ease, color 160ms ease, opacity 160ms ease;
     }
 
     .connect-icons a:hover {
+      color: var(--red);
       transform: translateY(-2px);
-      opacity: .72;
     }
 
     .connect-icons svg {
@@ -243,35 +318,22 @@
     }
 
     .bandcamp-mark {
-      width: 54px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      font-size: 1.45rem;
-      letter-spacing: -0.08em;
-      line-height: 1;
+      width: 52px;
+      height: 38px;
+      display: block;
       position: relative;
+      color: currentColor;
     }
 
     .bandcamp-mark::before {
       content: "";
       position: absolute;
+      left: 5px;
+      top: 9px;
       width: 42px;
-      height: 22px;
+      height: 21px;
       background: currentColor;
       transform: skewX(-24deg);
-      left: 0;
-      top: 10px;
-    }
-
-    .bandcamp-mark span {
-      position: relative;
-      z-index: 1;
-      color: var(--paper);
-      margin-left: .45rem;
-      font-size: .92rem;
-      letter-spacing: -.05em;
     }
 
     .youtube svg {
@@ -289,28 +351,15 @@
     }
 
     @media (max-width: 740px) {
-      .hero {
-        min-height: 86svh;
-      }
+      .hero { min-height: 92svh; }
 
-      .hero-photo {
-        width: 100%;
-        height: 68svh;
-        object-position: 47% center;
-      }
+      .hero-photo { object-position: 47% center; }
 
-      .hero-content {
-        top: clamp(10.5rem, 27svh, 17rem);
-      }
-
-      .hero-logo { width: min(320px, 76vw); }
-
-      .pronounced {
-        margin-bottom: 1.15rem;
-      }
+      .hero-logo { width: min(340px, 78vw); }
 
       .genres {
-        letter-spacing: .2em;
+        letter-spacing: .08em;
+        line-height: 1.5;
       }
 
       .members {
@@ -321,45 +370,45 @@
 
       .members span { display: none; }
 
-      .section {
-        padding: 2.7rem 0;
+      .show-row {
+        grid-template-columns: 1fr;
+        gap: .6rem;
+        text-align: center;
       }
 
-      .connect-icons {
-        gap: 1.7rem;
-      }
+      .show-date .day { font-size: 2rem; }
+
+      .section { padding: 3rem 0; }
     }
   </style>
 </head>
 <body>
   <main>
     <section class="hero">
-      <img class="hero-photo" src="ajile-band-bw.jpg" alt="AJILE performing live" />
+      <img class="hero-photo" src="ajile-band.jpg" alt="AJILE performing live" />
       <div class="hero-content">
         <img class="hero-logo" src="ajile-logo-beige.png" alt="AJILE" />
         <p class="pronounced">pronounced “agile”</p>
-        <p class="genres">Blues <span>•</span> Soul <span>•</span> R&amp;B</p>
+        <p class="genres"><span class="red">Original</span> Blues <span class="dot">•</span> Soul <span class="dot">•</span> R&amp;B</p>
         <p class="members">Aayushi Karnik <span>|</span> Jaysin Glover <span>|</span> Layton Weedeman</p>
         <a class="scroll" href="#about" aria-label="Scroll to about section">↓</a>
       </div>
     </section>
 
+    <div class="now-playing">
+      <strong>Now Playing</strong> Debut EP in production
+    </div>
+
     <section class="section about" id="about">
       <h2>About</h2>
-      <p>
-        AJILE is a blues, soul, and R&amp;B trio rooted in groove, feel, and improvisation.
-        Featuring guitarist and vocalist Aayushi Karnik, bassist Jaysin Glover, and drummer
-        Layton Weedeman, the band blends expressive songwriting, melodic bass lines, and
-        deep-pocket rhythms into performances that leave room for spontaneity and conversation.
-      </p>
+      <p><strong>AJILE</strong> is a Brooklyn-based trio exploring the space where blues, soul, and R&amp;B meet improvisation.</p>
+      <p>Featuring guitarist and vocalist Aayushi Karnik, bassist Jaysin Glover, and drummer Layton Weedeman, the band creates original music rooted in groove, feel, and conversation.</p>
     </section>
 
     <section class="section" id="music">
       <h2>Music</h2>
-      <div class="listen">
-        <h3>Debut recordings coming soon.</h3>
-        <div class="coming-line"></div>
-      </div>
+      <p class="music-kicker">Debut EP</p>
+      <p class="music-title">Coming Soon</p>
     </section>
 
     <section class="section" id="video">
@@ -372,18 +421,25 @@
 
     <section class="section" id="shows">
       <h2>Shows</h2>
-      <div class="show-card">
-      <p><strong>July 16, 2026</strong></p>
-      <p>Brooklyn Music Kitchen</p>
-      <p>177 Vanderbilt Ave</p>  
-      <p>Brooklyn, NY</p>
-      <br><br>  
+      <div class="shows-list">
+        <div class="show-row">
+          <div class="show-date">Jul <span class="day">16</span> 2026</div>
+          <div class="show-info">
+            <h3>Brooklyn Music Kitchen</h3>
+            <p>177 Vanderbilt Ave</p>
+            <p>Brooklyn, NY</p>
+          </div>
+        </div>
 
-      <p><strong>September 30, 2026</strong></p>
-      <p>Nublu</p>
-      <p>151 Avenue C.</p>
-      <p>New York, NY</p>  
-    </div>
+        <div class="show-row">
+          <div class="show-date">Sep <span class="day">30</span> 2026</div>
+          <div class="show-info">
+            <h3>Nublu</h3>
+            <p>151 Avenue C</p>
+            <p>New York, NY</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer class="section footer" id="connect">
@@ -391,19 +447,15 @@
       <div class="connect-icons">
         <a href="https://www.instagram.com/weareajile/" aria-label="Instagram">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
-          <span>Instagram</span>
         </a>
         <a href="#" aria-label="Bandcamp">
-          <span class="bandcamp-mark"><span>bc</span></span>
-          <span>Bandcamp</span>
+          <span class="bandcamp-mark"></span>
         </a>
         <a class="youtube" href="#" aria-label="YouTube">
           <svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C16 4 12 4 12 4s-4 0-6.8.2c-.4.1-1.2.1-2 .9-.6.6-.8 2.1-.8 2.1S2.2 9 2.2 10.8v1.7c0 1.8.2 3.6.2 3.6s.2 1.5.8 2.1c.8.8 1.8.8 2.2.9 1.6.2 6.6.2 6.6.2s4 0 6.8-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2.1.8-2.1s.2-1.8.2-3.6v-1.7c0-1.8-.2-3.6-.2-3.6zM10 15.2V8.8l5.8 3.2L10 15.2z"></path></svg>
-          <span>YouTube</span>
         </a>
         <a href="mailto:weareajile@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"></rect><path d="M4 7l8 6 8-6"></path></svg>
-          <span>Email</span>
         </a>
       </div>
       <p class="copyright">© <span id="year"></span> AJILE</p>
