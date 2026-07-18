@@ -8,7 +8,6 @@
   <meta property="og:title" content="AJILE | Original Blues, Soul & R&B" />
   <meta property="og:description" content="AJILE is a Brooklyn-based blues, soul, and R&B trio featuring Aayushi Karnik, Jaysin Glover, and Layton Weedeman." />
   <meta property="og:image" content="https://weareajile.com/social-share.jpg" />
-  <meta property="og:image:alt" content="AJILE band website preview image" />
   <meta property="og:url" content="https://weareajile.com" />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -250,63 +249,101 @@
       color: var(--muted);
     }
 
-    .shows-list {
+
+    .show-grid {
       display: grid;
-      gap: 1.2rem;
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: left;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+      margin-top: 2rem;
     }
 
-    .show-row {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 1.5rem;
-      align-items: center;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--line);
+    .show-card {
+      text-align: center;
     }
 
-    .show-row:first-child { border-top: 0; }
+    .show-poster-link {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #111;
+    }
+
+    .show-poster {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      transition: transform 220ms ease, opacity 220ms ease;
+    }
+
+    .show-poster-link:hover .show-poster {
+      transform: scale(1.02);
+      opacity: .9;
+    }
+
+    .show-info {
+      padding-top: 1.25rem;
+    }
 
     .show-date {
+      margin: 0 0 .5rem;
       color: var(--red);
       text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .76rem;
       font-weight: 900;
-      letter-spacing: .12em;
-      line-height: 1.1;
-    }
-
-    .show-date .day {
-      display: block;
-      color: var(--cream);
-      font-size: 2.4rem;
-      letter-spacing: 0;
     }
 
     .show-info h3 {
-      margin: 0 0 .25rem;
+      margin: 0 0 .35rem;
       color: var(--cream);
-      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      font-size: clamp(1.35rem, 2.6vw, 1.75rem);
     }
 
     .show-info p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.45;
+      line-height: 1.5;
     }
-    .ticket-link {
+
+    .show-actions {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .show-action {
+      display: inline-block;
+      border: 1px solid var(--red);
       color: var(--red);
+      padding: .7rem 1rem;
       text-transform: uppercase;
       letter-spacing: .14em;
-      font-size: .78rem;
+      font-size: .72rem;
       font-weight: 900;
-}
+      transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
 
-    .ticket-link:hover {
-    color: var(--cream);
-}
-    .connect-icons {
+    .show-action:hover {
+      background: var(--red);
+      color: var(--bg);
+    }
+
+    .show-action.secondary {
+      border-color: var(--line);
+      color: var(--cream);
+    }
+
+    .show-action.secondary:hover {
+      border-color: var(--cream);
+      background: var(--cream);
+      color: var(--bg);
+    }
+
+.connect-icons {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -396,6 +433,15 @@
       .show-date .day { font-size: 2rem; }
 
       .section { padding: 3rem 0; }
+
+      .show-grid { grid-template-columns: 1fr; }
+      .show-poster { aspect-ratio: auto; }
+
+      .past-show-row {
+        grid-template-columns: 1fr;
+        gap: .6rem;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -436,35 +482,70 @@
       </div>
     </section>
 
-    <section class="section" id="shows">
-      <h2>Shows</h2>
-      <div class="shows-list">
-        <div class="show-row">
-          <div class="show-date">Jul <span class="day">16</span> 2026</div>
-          <div class="show-info">
-            <h3>Brooklyn Music Kitchen</h3>
-            <p>177 Vanderbilt Ave</p>
-            <p>Brooklyn, NY</p>
-            <p><a class="ticket-link" href="https://dice.fm/event/pybaxp-ajiledeadweighthaleydriverlexipinnatayeily-saints-16th-jul-brooklyn-music-kitchen-new-york-city-tickets" target="_blank" rel="noopener">Tickets →</a></p>
-          </div>
-        </div>
 
-       <div class="show-row">
-          <div class="show-date">Aug <span class="day">22</span> 2026</div>
+    <section class="section" id="shows">
+      <h2>Upcoming Shows</h2>
+
+      <div class="show-grid">
+        <article class="show-card">
+          <a class="show-poster-link" href="ycm-youngethels-08.22.26.png" target="_blank" rel="noopener">
+            <img
+              class="show-poster"
+              src="ycm-youngethels-08.22.26.png"
+              alt="AJILE, The Du-Rites, and Eric Biondo at Young Ethel's on August 22, 2026"
+            />
+          </a>
+
           <div class="show-info">
+            <p class="show-date">Saturday · August 22, 2026 · 1–4 PM</p>
             <h3>Young Ethel's</h3>
             <p>506 5th Ave</p>
             <p>Brooklyn, NY</p>
-            <p><a class="ticket-link" href="https://www.eventbrite.com/e/yellow-couch-music-presents-ajile-the-du-rites-eric-biondo-tickets-1993645882502" target="_blank" rel="noopener">Tickets →</a></p>
+
+            <div class="show-actions">
+              <a class="show-action secondary" href="ycm-youngethels-08.22.26.png" target="_blank" rel="noopener">View Poster</a>
+              <a class="show-action" href="#" target="_blank" rel="noopener">Tickets</a>
+            </div>
           </div>
-        </div>
-        
-        <div class="show-row">
-          <div class="show-date">Sep <span class="day">30</span> 2026</div>
+        </article>
+
+        <article class="show-card">
+          <a class="show-poster-link" href="YellowCouchMusic-NUBLU-SEPT30.png" target="_blank" rel="noopener">
+            <img
+              class="show-poster"
+              src="YellowCouchMusic-NUBLU-SEPT30.png"
+              alt="Anthony Hervey, Yellow Couch Music, and AJILE at Nublu on September 30, 2026"
+            />
+          </a>
+
           <div class="show-info">
+            <p class="show-date">Wednesday · September 30, 2026 · 7–10 PM</p>
             <h3>Nublu</h3>
             <p>151 Avenue C</p>
             <p>New York, NY</p>
+
+            <div class="show-actions">
+              <a class="show-action secondary" href="YellowCouchMusic-NUBLU-SEPT30.png" target="_blank" rel="noopener">View Poster</a>
+              <a class="show-action" href="https://www.nublu.net/" target="_blank" rel="noopener">Event Info</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+
+    <section class="section" id="past-shows">
+      <h2>Past Shows</h2>
+
+      <div class="past-shows">
+        <div class="past-show-row">
+          <div class="past-show-date">Jul <span class="day">16</span> 2026</div>
+          <div class="past-show-info">
+            <h3>Brooklyn Music Kitchen</h3>
+            <p>177 Vanderbilt Ave</p>
+            <p>Brooklyn, NY</p>
+            <span class="past-label">Past Performance</span>
           </div>
         </div>
       </div>
