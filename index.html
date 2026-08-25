@@ -343,6 +343,27 @@
       color: var(--bg);
     }
 
+    .past-show-date {
+  color: var(--red);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: .08em;
+  line-height: 1.2;
+}
+
+.past-show-info h3 {
+  margin: 0;
+  color: var(--cream);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.past-show-info p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
 .connect-icons {
       display: flex;
       justify-content: center;
@@ -520,25 +541,31 @@
       </div>
     </section>
 
-    <section class="section" id="past-shows">
-      <h2>Past Shows</h2>
+<section class="section" id="past-shows">
+  <h2>Past Shows</h2>
 
-      <div class="past-shows">
-        <div class="past-show-row">
-          <div class="past-show-date">Aug <span class="day">22</span> 2026<br>
-            <h3>Young Ethel's</h3><br>506 5th Ave<br>Brooklyn, NY</div> 
-          </div>
-        </div>
+  <div class="past-shows">
 
-        <div class="past-show-row">
-          <div class="past-show-date">Jul <span class="day">16</span> 2026</div>
-          <div class="past-show-info">
-            <h3>Brooklyn Music Kitchen</h3>
-            <p>177 Vanderbilt Ave<br>Brooklyn, NY</p>
-          </div>
-        </div>
+    <div class="past-show-row">
+      <div class="past-show-date">Aug 22, 2026</div>
+      <div class="past-show-info">
+        <h3>Young Ethel's</h3>
+        <p>506 5th Ave</p>
+        <p>Brooklyn, NY</p>
       </div>
-    </section>
+    </div>
+
+    <div class="past-show-row">
+      <div class="past-show-date">July 16, 2026</div>
+      <div class="past-show-info">
+        <h3>Brooklyn Music Kitchen</h3>
+        <p>177 Vanderbilt Ave</p>
+        <p>Brooklyn, NY</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
     <footer class="section footer" id="connect">
