@@ -474,6 +474,10 @@
         gap: .6rem;
         text-align: center;
       }
+
+      .mailing-fields {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -577,7 +581,6 @@
         <p>Brooklyn, NY</p>
       </div>
     </div>
-<p></p>
     <div class="past-show-row">
       <div class="past-show-date">July 16, 2026</div>
       <div class="past-show-info">
@@ -589,6 +592,29 @@
   </div>
 </section>
 
+
+
+    <section class="section mailing-list" id="mailing-list">
+      <h2>Stay in the Loop</h2>
+      <p class="mailing-copy">Shows, new music &amp; occasional AJILE news.</p>
+
+      <form
+        class="mailing-form"
+        action="https://weareajile.us1.list-manage.com/subscribe/post?u=15254425ec6084a8e18f63907&amp;id=582b1c56d4&amp;f_id=002cdde5f0"
+        method="post"
+        target="_blank"
+      >
+        <div class="mailing-fields">
+          <input type="text" name="FNAME" placeholder="First name" aria-label="First name" />
+          <input type="email" name="EMAIL" placeholder="Email address" aria-label="Email address" required />
+          <button type="submit" name="subscribe">Join</button>
+        </div>
+
+        <div aria-hidden="true" style="position:absolute; left:-5000px;">
+          <input type="text" name="b_15254425ec6084a8e18f63907_582b1c56d4" tabindex="-1" value="" />
+        </div>
+      </form>
+    </section>
 
     <footer class="section footer" id="connect">
       <h2>Connect</h2>
